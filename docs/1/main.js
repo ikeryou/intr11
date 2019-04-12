@@ -109,12 +109,12 @@ function update() {
   for(var i = 0; i < _mesh.length; i++) {
     var mesh = _mesh[i];
     var rd = i * 0.04 + Date.now() * 0.002;
-    var radius = sw * 0.2;
+    var radius = Math.max(sw, sh) * 0.2;
     mesh.position.x = Math.sin(rd) * radius;
     mesh.position.z = Math.cos(rd) * radius;
     mesh.position.y = Math.cos(rd * 2.5) * radius * 0.25;
 
-    var scale = map(Math.sin(Date.now() * 0.005 + i * 0.5), sw * 0.03, sw * 0.075, -1, 1);
+    var scale = map(Math.sin(Date.now() * 0.005 + i * 0.5), Math.max(sw, sh) * 0.03, Math.max(sw, sh) * 0.075, -1, 1);
     mesh.scale.set(scale, scale, scale);
   }
 
